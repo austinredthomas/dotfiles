@@ -1,0 +1,132 @@
+#window,
+#box,
+#aiScroll,
+#aiList,
+#search,
+#password,
+#input,
+#prompt,
+#clear,
+#typeahead,
+#list,
+child,
+scrollbar,
+slider,
+#item,
+#text,
+#label,
+#bar,
+#sub,
+#activationlabel {
+  all: unset;
+}
+
+#cfgerr {
+  background: rgba(255, 0, 0, 0.4);
+  margin-top: 20px;
+  padding: 8px;
+  font-size: 1.2em;
+  border-radius: 12px;
+}
+
+#window {
+  color: @foreground;
+}
+
+#box {
+  border-radius: 24px;
+  background: rgba(17, 17, 27, 0.9); /* very dark with light transparency */
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* soft border */
+  backdrop-filter: blur(20px); /* adds blur behind the box */
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+#search {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 2px 3px rgba(0, 0, 0, 0.15);
+  background: lighter(@background);
+  padding: 12px;
+  border-radius: 20px;
+}
+
+#prompt {
+  margin-left: 4px;
+  margin-right: 12px;
+  color: @foreground;
+  opacity: 0.2;
+}
+
+#clear {
+  color: @foreground;
+  opacity: 0.7;
+}
+
+#password,
+#input,
+#typeahead {
+  border-radius: 20px;
+}
+
+#input {
+  background: none;
+}
+
+#spinner {
+  padding: 10px;
+}
+
+#typeahead {
+  color: @foreground;
+  opacity: 0.8;
+}
+
+#input placeholder {
+  opacity: 0.5;
+}
+
+child {
+  padding: 12px 16px;
+  border-radius: 20px;
+  transition: background 0.15s ease;
+}
+
+child:selected,
+child:hover {
+  background: alpha(@color1, 0.35);
+  color: @foreground;
+}
+
+#icon {
+  margin-right: 10px;
+}
+
+#label {
+  font-weight: 500;
+}
+
+#sub {
+  opacity: 0.5;
+  font-size: 0.85em;
+}
+
+.aiItem {
+  padding: 14px;
+  border-radius: 20px;
+  color: @foreground;
+  background: @background;
+  margin-bottom: 6px;
+}
+
+.aiItem.user {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.aiItem.assistant {
+  background: lighter(@background);
+}
+
