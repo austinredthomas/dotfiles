@@ -25,16 +25,11 @@
         "disable-scroll": true,
         "all-outputs": false,
         "warp-on-scroll": false,
-        "format": "{name}: {icon}",
+        "format": "{name}{icon}",
         "format-icons": { 
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "urgent": " ",
+            "focused": " ",
+	    "default": ""
         }
     },
     "hyprland/submap": {
@@ -61,9 +56,9 @@
     "network": {
         // "interface": "enp*", // Optional: target interface by pattern
         "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " Connected",
+        "format-ethernet": " ",
         "format-linked": " No IP",
-        "format-disconnected": "⚠ Disconnected",
+        "format-disconnected": "⚠",
         "format-alt": "{ifname}: {ipaddr}",
         "tooltip-format": "{ifname} via {gwaddr}\nIPv4: {ipaddr}/{cidr}\nIPv6: {ip6addr}"
     }

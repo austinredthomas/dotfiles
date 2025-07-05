@@ -26,10 +26,14 @@ window#waybar {
 
 /* Workspaces */
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 2px;
     color: #888888;
     background: transparent;
     border-radius: 5px;
+}
+
+#workspaces button.active {
+    color: #d6deff
 }
 
 #workspaces button.focused {
