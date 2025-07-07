@@ -1,0 +1,10 @@
+#! /bin/bash
+# echo "Loading bash_aliases"
+
+alias ..="cd .."
+
+# Utilities
+alias ll="ls -la"
+alias count="ls -A1 | wc -l"
+
+alias lynx="lynx -vikeys"
