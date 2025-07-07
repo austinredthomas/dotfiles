@@ -1,0 +1,19 @@
+README.md
+
+{{- if eq .chezmoi.hostname "REM11-ATHO-LT" }}
+# ignore all hyprland specific config
+.config/sunsetr/
+.config/sunsetr/**
+.config/hypr/
+.config/hypr/**
+.config/gtk-4.0/
+.config/gtk-4.0/**
+.config/kitty/
+.config/kitty/**
+.config/walker/
+.config/walker/**
+.config/waybar/
+.config/waybar/**
+
+{{- end }}
+
