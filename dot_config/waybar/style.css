@@ -1,15 +1,15 @@
 /* General Bar Styles */
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 2px;
     font-family: JetBrainsMono Nerd Font, monospace;
     font-size: 14px;
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 0.9);
-    color: #ffffff;
+    background: rgba(29, 35, 45, 0.96); 
+    color: #405657;
     padding: 0 10px;
 }
 
@@ -26,14 +26,14 @@ window#waybar {
 
 /* Workspaces */
 #workspaces button {
-    padding: 0 2px;
-    color: #888888;
+    padding: 0 1px;
+    color: #849289;
     background: transparent;
     border-radius: 5px;
 }
 
 #workspaces button.active {
-    color: #d6deff
+    color: #ffffff;
 }
 
 #workspaces button.focused {
@@ -59,33 +59,33 @@ window#waybar {
 
 /* Window title */
 #window {
-    color: #ffffff;
+    color: #849288;
     font-weight: bold;
 }
 
 /* Audio (Wireplumber) */
 #wireplumber {
-    color: #a3be8c;
+    color: #849288;
     padding: 0 10px;
 }
 
 #wireplumber.muted {
-    color: #888888;
+    color: #849288;
 }
 
 /* Network */
 #network {
-    color: #b48ead;
+    color: #849288;
 }
 
 #network.disconnected {
-    color: #bf616a;
+    color: #918383;
     font-style: italic;
 }
 
 /* Clock */
 #clock {
-    color: #ebcb8b;
+    color: #849288;
 }
 
 /* System Tray */
