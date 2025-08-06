@@ -4,5 +4,4 @@ return {
 	keys = {
 		{"<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" }
 	}
-	
 }
