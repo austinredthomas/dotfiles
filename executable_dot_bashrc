@@ -5,5 +5,13 @@ if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
 fi
 
+# .env variables
+if [ -f ~/.config/.env ]; then
+	source ~/.config/.env
+fi
+
 # init starship
 eval "$(starship init bash)"
+
+# uv
+export PATH="/home/austin/.local/bin:$PATH"
