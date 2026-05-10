@@ -1,4 +1,6 @@
 README.md
+pkg-list-aur.txt
+pkg-list.txt
 
 {{- $isArch := and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
 {{- $isWSL := contains "microsoft" (lower .chezmoi.kernel.osrelease) }}
