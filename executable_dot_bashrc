@@ -11,7 +11,9 @@ if [ -f ~/.config/.env ]; then
 fi
 
 # init starship
-eval "$(starship init bash)"
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+fi
 
 # uv
 export PATH="/home/austin/.local/bin:$PATH"
