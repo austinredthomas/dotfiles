@@ -15,3 +15,4 @@ eval "$(starship init bash)"
 
 # uv
 export PATH="/home/austin/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
