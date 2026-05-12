@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+{{- if eq .chezmoi.os "linux" }}
+
+install_arch_packages() {
+    local packages=(
+        btop
+        fd
+        git
+        hypridle
+        hyprland
+        hyprlock
+        hyprpaper
+        kitty
+        neovim
+        ripgrep
+        starship
+        tmux
+        ttf-font-awesome
+        udiskie
+        waybar
+        wl-clipboard
+        yazi
+    )
+
+    sudo pacman -S --needed "${packages[@]}"
+}
+
+install_ubuntu_packages() {
+    local packages=(
+        btop
+        fd-find
+        git
+        kitty
+        neovim
+        ripgrep
+        tmux
+    )
+
+    sudo apt update
+    sudo apt install "${packages[@]}"
+}
+
+if command -v pacman >/dev/null 2>&1; then
+    install_arch_packages
+elif command -v apt >/dev/null 2>&1; then
+    install_ubuntu_packages
+else
+    echo "No supported package manager found. Install packages manually." >&2
+    exit 1
+fi
+
+{{- else }}
+echo "Package bootstrap is only configured for Linux. Skipping."
+{{- end }}
