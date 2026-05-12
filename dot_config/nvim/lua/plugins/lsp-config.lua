@@ -2,6 +2,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
         ensure_installed = { "lua_ls", "ruff", "basedpyright" },
+        automatic_enable = false,
     },
     config = function(_, opts)
         vim.diagnostic.config({
@@ -36,6 +37,16 @@ return {
         })
 
         require("mason-lspconfig").setup(opts)
+
+        local servers = { "lua_ls", "ruff", "basedpyright" }
+        if vim.lsp.enable then
+            vim.lsp.enable(servers)
+        else
+            local lspconfig = require("lspconfig")
+            for _, server in ipairs(servers) do
+                lspconfig[server].setup({})
+            end
+        end
     end,
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
