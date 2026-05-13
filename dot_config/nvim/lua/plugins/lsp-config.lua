@@ -1,7 +1,7 @@
 return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-        ensure_installed = { "lua_ls", "ruff", "basedpyright" },
+        ensure_installed = { "lua_ls", "ruff", "basedpyright", "gopls" },
         automatic_enable = false,
     },
     config = function(_, opts)
@@ -38,7 +38,7 @@ return {
 
         require("mason-lspconfig").setup(opts)
 
-        local servers = { "lua_ls", "ruff", "basedpyright" }
+        local servers = { "lua_ls", "ruff", "basedpyright", "gopls" }
         if vim.lsp.enable then
             vim.lsp.enable(servers)
         else
