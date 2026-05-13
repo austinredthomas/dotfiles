@@ -1,18 +1,16 @@
-#! /bin/bash
-
 # aliases
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    source "$HOME/.bash_aliases"
 fi
 
 # .env variables
-if [ -f ~/.config/.env ]; then
-	source ~/.config/.env
+if [ -f "$HOME/.config/.env" ]; then
+    source "$HOME/.config/.env"
 fi
 
 # init starship
 if command -v starship >/dev/null 2>&1; then
-    eval "$(starship init bash)"
+    eval "$(starship init zsh)"
 fi
 
 # uv

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-{{- if eq .chezmoi.os "linux" }}
-
 install_arch_packages() {
     local packages=(
         btop
@@ -50,6 +48,28 @@ install_ubuntu_packages() {
     sudo apt install "${packages[@]}"
 }
 
+install_macos_packages() {
+    local packages=(
+        btop
+        fd
+        git
+        neovim
+        python
+        ripgrep
+        starship
+        tmux
+        yazi
+    )
+
+    if ! command -v brew >/dev/null 2>&1; then
+        echo "Homebrew is required to install packages on macOS: https://brew.sh" >&2
+        exit 1
+    fi
+
+    brew install "${packages[@]}"
+}
+
+{{- if eq .chezmoi.os "linux" }}
 if command -v pacman >/dev/null 2>&1; then
     install_arch_packages
 elif command -v apt >/dev/null 2>&1; then
@@ -58,7 +78,8 @@ else
     echo "No supported package manager found. Install packages manually." >&2
     exit 1
 fi
-
+{{- else if eq .chezmoi.os "darwin" }}
+install_macos_packages
 {{- else }}
-echo "Package bootstrap is only configured for Linux. Skipping."
+echo "Package bootstrap is only configured for Linux and macOS. Skipping."
 {{- end }}
