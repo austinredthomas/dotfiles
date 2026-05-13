@@ -1,7 +1,9 @@
 README.md
 
-{{- if eq .chezmoi.hostname "REM11-ATHO-LT" }}
-# ignore all hyprland specific config
+{{- $isArch := and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
+{{- $isWSL := contains "microsoft" (lower .chezmoi.kernel.osrelease) }}
+{{- if not (and $isArch (not $isWSL)) }}
+# Desktop-only config. Apply only on native Arch Linux, not WSL or non-Arch hosts.
 .config/sunsetr/
 .config/sunsetr/**
 .config/hypr/
@@ -16,4 +18,3 @@ README.md
 .config/waybar/**
 
 {{- end }}
-
