@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+{{- $isWSL := contains "microsoft" (lower .chezmoi.kernel.osrelease) }}
+
 install_arch_packages() {
     local packages=(
         btop
         fd
         git
         go
+{{- if not $isWSL }}
         hypridle
         hyprland
         hyprlock
         hyprpaper
         kitty
+{{- end }}
         neovim
         nodejs
         npm
@@ -22,15 +26,17 @@ install_arch_packages() {
         starship
         terraform
         tmux
+{{- if not $isWSL }}
         ttf-font-awesome
         udiskie
         waybar
         wl-clipboard
+{{- end }}
         yazi
         unzip
     )
 
-    sudo pacman -S --needed "${packages[@]}"
+    sudo pacman -S --needed --noconfirm "${packages[@]}"
 }
 
 install_ubuntu_packages() {
@@ -52,7 +58,7 @@ install_ubuntu_packages() {
     )
 
     sudo apt update
-    sudo apt install "${packages[@]}"
+    sudo apt install -y "${packages[@]}"
 }
 
 install_macos_packages() {
