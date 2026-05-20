@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-{{- $isWSL := contains "microsoft" (lower .chezmoi.kernel.osrelease) }}
+{{- $isLinux := eq .chezmoi.os "linux" }}
+{{- $kernelRelease := "" }}
+{{- if $isLinux }}
+{{- $kernelRelease = get .chezmoi.kernel "osrelease" }}
+{{- end }}
+{{- $isWSL := and $isLinux (contains "microsoft" (lower $kernelRelease)) }}
 
 install_arch_packages() {
     local packages=(
@@ -72,9 +77,12 @@ install_macos_packages() {
         python
         ripgrep
         starship
-        terraform
+        hashicorp/tap/terraform
         tmux
         yazi
+    )
+    local casks=(
+        font-jetbrains-mono-nerd-font
     )
 
     if ! command -v brew >/dev/null 2>&1; then
@@ -82,7 +90,9 @@ install_macos_packages() {
         exit 1
     fi
 
+    brew tap hashicorp/tap
     brew install "${packages[@]}"
+    brew install --cask "${casks[@]}"
 }
 
 {{- if eq .chezmoi.os "linux" }}

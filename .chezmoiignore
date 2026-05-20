@@ -2,8 +2,15 @@ README.md
 pkg-list-aur.txt
 pkg-list.txt
 
-{{- $isArch := and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
-{{- $isWSL := contains "microsoft" (lower .chezmoi.kernel.osrelease) }}
+{{- $isLinux := eq .chezmoi.os "linux" }}
+{{- $osReleaseID := "" }}
+{{- $kernelRelease := "" }}
+{{- if $isLinux }}
+{{- $osReleaseID = get .chezmoi.osRelease "id" }}
+{{- $kernelRelease = get .chezmoi.kernel "osrelease" }}
+{{- end }}
+{{- $isArch := and $isLinux (eq $osReleaseID "arch") }}
+{{- $isWSL := and $isLinux (contains "microsoft" (lower $kernelRelease)) }}
 {{- if not (and $isArch (not $isWSL)) }}
 # Desktop-only config. Apply only on native Arch Linux, not WSL or non-Arch hosts.
 .config/sunsetr/
